@@ -18,7 +18,7 @@ class MyThread extends Thread{
         super(name);
     }
     public void run(){
-        int i = 34;
+        //int i = 34;
         while (true) {
             System.out.println("Thank_you " +  this.getName());
         } 

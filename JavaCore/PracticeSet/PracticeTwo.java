@@ -54,3 +54,7 @@ public class PracticeTwo {
         input.close();
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6987044 (Initial System Update)

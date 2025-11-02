@@ -10,7 +10,7 @@ class MyThreadRunnableStringName implements Runnable{
     @Override
     public void run(){
         System.out.println("Thread "+ name + " is running...");
-        int i = 34;
+        //int i = 34;
     }
 }
 public class ThreadRunnableStringName {
