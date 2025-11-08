@@ -1,60 +1,57 @@
 package JavaCore.PracticeSet;
 
-import java.util.Scanner;
-
-class Monopoly{
-    private int profitsP, companyA;
-    private int profitsQ, companyB;
-    private int profitsR, companyC;
-    private int profitsS, companyD;
-
-   // private int companyA;
-   // private int companyB;
-   // private int companyC;
-   // private int companyD;
-
-    public void Profits(int profitsA, int profitsB, int profitsC, int profitsD){
-        this.profitsP = profitsA;
-        this.profitsQ = profitsB;
-        this.profitsR = profitsC;
-        this.profitsS = profitsD;
+public class PracticeTwo {
+    public static void printArr(int arr[]){
+        for(int i=0; i<=arr.length-1; i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
     }
-
-    public void ProfitCalculation(){
-        companyA = profitsQ + profitsR + profitsS;
-        companyB = profitsP + profitsR + profitsS;
-        companyC = profitsP + profitsQ + profitsS;
-        companyD = profitsP + profitsQ + profitsR;
+    public static void mergeSort(int arr[], int starting_index, int end_index){
+        if(starting_index >= end_index){
+            return;
+        }
+        int mid_index = (starting_index + end_index)/2;
+        mergeSort(arr, starting_index, mid_index);     // left_index 
+        mergeSort(arr, mid_index+1, end_index);         // right_index
+        Merge(arr, starting_index, mid_index, end_index);    /// Combine to all index including (arr, starting_index, mid_index, end_index)
     }
-    public String DataReleased(){
-        if (profitsP > companyA || profitsQ > companyB || profitsR > companyC || profitsS > companyD) {
-            return "Yes";
-        } else {
-            return "No";
+    public static void Merge(int arr[], int starting_index, int mid_index, int end_index){
+        // create temp array
+        int[] temp = new int[end_index-starting_index+1];
+        // create index_
+        int left_index = starting_index;
+        int right_index =  mid_index+1;
+        int k_temp_index =  0;
+
+        while (left_index < mid_index && right_index < end_index) {
+            if(arr[left_index] <= arr[right_index]){
+                temp[k_temp_index] = arr[left_index];
+                left_index++;
+            }else{
+                temp[k_temp_index] = arr[right_index];
+                right_index++;
+            }
+            k_temp_index++;
+        }
+
+        // reamin part left part
+        while (left_index <= mid_index) {
+            temp[k_temp_index++] = arr[left_index++];
+        }
+        // remain part of right part
+        while(right_index <= end_index){
+            temp[k_temp_index++] = arr[right_index++];
+        }
+
+        // copy of temp to orginal array....!
+        for(int i=0; i<temp.length; i++){
+            arr[starting_index + i] = temp[i];
         }
     }
-}
-
-public class PracticeTwo {
-    public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter of your A Company Profits: ");
-        int profitsA = input.nextInt();
-        System.out.print("Enter of your B Company Profits: ");
-        int profitsB = input.nextInt();
-        System.out.print("Enter of your C Company Profits: ");
-        int profitsC = input.nextInt();
-        System.out.print("Enter of your D Company Profits: ");
-        int profitsD = input.nextInt();
-        
-        Monopoly mn = new Monopoly();
-        mn.Profits(profitsA, profitsB, profitsC, profitsD);
-        mn.ProfitCalculation();
-        System.out.println(mn.DataReleased());
-        input.close();
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 4, 5, 6, 7, 8};
+        mergeSort(arr, 0, arr.length-1);
+        printArr(arr);
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 6987044 (Initial System Update)
